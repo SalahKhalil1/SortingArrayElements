@@ -16,6 +16,10 @@ cmp cx,si
 jz Next
 mov al, array1[si] 
 mov bl, array1[si+1]
+cmp al,bl           
+        ja Exchange
+        add si,1           
+        jmp BubbleSortArray
 
 
 
