@@ -1,6 +1,5 @@
 
-; You may customize this and other start-up templates; 
-; The location of this template is c:\emu8086\inc\0_com_template.txt
+;assending
 
 org 100h
 
@@ -22,7 +21,18 @@ cmp al,bl
         jmp BubbleSortArray
 
 
+;dessending
 
-
+mov si,00   
+mov cx,10   ;The number of array elements                           
+sub cx,1    ;The number of array element minus1  
+BubbleSortArray:
+cmp cx,si
+mov al, array1[si] 
+mov bl, array1[si+1]
+cmp al,bl           
+        jb Exchange
+        add si,1           
+        jmp BubbleSortArray
 
 
