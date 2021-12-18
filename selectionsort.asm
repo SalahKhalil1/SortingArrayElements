@@ -36,5 +36,5 @@ Selection_Algorithm:
 		CMP EBX,EAX					;arr[Loop 2 counter] > arr[max index] 
 		jle out					;jump if a[max index]>arr[Loop 2 counter]
 		mov edx,L1_Counter				; if arr[Loop 2 counter] > arr[Max index]
-		mov maxIndex,edx				;max index =Loop 2 counter
+		mov maxIndex,edx				;max index =Loop2counter
 
