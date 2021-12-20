@@ -38,6 +38,29 @@ main proc
     mov bx, cx
 
     mov si, 0
+ CompLoop1:
+
+    mov al,arr[si]
+
+    mov dl,arr[si+1]   
+
+    cmp al,dl
+
+    jc noSwap1
+
+    mov arr[si], dl
+
+    mov arr[si+1], al
+
+    noSwap1: 
+
+    inc si
+
+    dec bx
+
+    jnz CompLoop1
+
+    loop OuterLoop1
 
 
 ;dessending
