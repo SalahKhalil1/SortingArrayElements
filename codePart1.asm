@@ -63,18 +63,23 @@ main proc
     loop OuterLoop1
 
 
-;dessending
+;descending
 
-mov si,00   
-mov cx,10   ;The number of array elements                           
-sub cx,1    ;The number of array element minus1  
-BubbleSortArray:
-cmp cx,si
-mov al, array1[si] 
-mov bl, array1[si+1]
-cmp al,bl           
-        jb Exchange
-        add si,1           
-        jmp BubbleSortArray
+mov cx, 5
+
+    dec cx
+
+    OuterLoop2:
+
+    mov bx, cx
+
+    mov si, 0    
+
+    CompLoop2:
+
+    mov al,arr[si]
+
+    mov dl,arr[si+1]   
+
 
 
