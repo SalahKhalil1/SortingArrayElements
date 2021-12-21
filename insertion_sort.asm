@@ -1,25 +1,15 @@
-
-.model small  
-
-.data
-m1 db "Enter size of array $" 
-
-         
-.code 
-                           
-                 
-         
-        
-main proc 
-    mov ax , seg m1
-    mov ds , ax
-    mov dx , offset m1
-    mov ah , 9h
-    int 21h     ; print message1
-    
-    mov ah , 1h ; size of array stor in al
-    int 21h     ; input size of array
-    mov bl,al   ; save the size of array in bl 
+.model small
+ .stack 100h 
+ .data
+    n db 11h,99h,22h,88h,33h,77h,44h,66h
+    count dw 8
   
-    endp
-end main
+ .code
+ 
+ begin: 
+    mov ax,@data
+    
+    mov ds,ax
+    
+    mov cx,count 
+    dec cx       
