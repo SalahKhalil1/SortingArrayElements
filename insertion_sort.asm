@@ -12,4 +12,14 @@
     mov ds,ax
     
     mov cx,count 
-    dec cx       
+    dec cx 
+
+nextscan: mov bx,cx
+
+        mov si,0
+
+nextcomp:
+
+    mov al,n[si]
+    mov dl,n[si+1]
+          
