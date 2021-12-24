@@ -79,7 +79,22 @@ mov cx, 5
 
     mov al,arr[si]
 
-    mov dl,arr[si+1]   
+    mov dl,arr[si+1] 
+    cmp al,dl
+
+    jnc noSwap2
+
+    mov arr[si], dl
+
+    mov arr[si+1], al
+
+    noSwap2: 
+
+    inc si
+
+    dec bx
+    jnz CompLoop2
+  
 
 
 
