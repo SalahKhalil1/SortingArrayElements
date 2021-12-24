@@ -21,5 +21,6 @@ nextscan: mov bx,cx
 nextcomp:
 
     mov al,n[si]
-    mov dl,n[si+1]
+    mov dl,n[si+1]  ;using next index method
+    
           
