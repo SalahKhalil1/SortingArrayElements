@@ -1,13 +1,10 @@
-.MODEL SMALL
- .STACK 100H
- .DATA  
+.386
+include irvine32.inc
+.model flat,stdcall
+.stack 1000h
+.data
  
-    SIZE_MESSAGE  DW  'Enter Array size :$'
-    Take_Elements  DW  ,0AH,0DH,'Please enter 16 bit Array Element :$'  
-    Size_Error_Message  DW  ,0AH,0DH,'Please enter only Positive number as an Array Size, $'
-    Type_Of_Sort  DW  ,0AH,0DH,'please,What is the Sorting Type Would You Choose?: $'
-    Types_Message  DW  ,0AH,0DH,'1 for Bubble',0AH,0DH,' 2 for SELECTION' ,0AH,0DH,' 3 for Insertion',0AH,0DH,'$'  
-    Sort_Type_Error  DW  'you can only choose 1 for bubble , 2 for Selection or 3 for Insertion:',0AH,0DH,'$'
-    Assending_Sort  DW  ,0AH,0DH,'Assending Sort is:$'
-    Dessending_Sort  DW  ,0AH,0DH,'Dessending Sort is:$'
-    Empty_Array  DW  ,0AH,0DH,'your Array is empty,please enter an integer:$'
+Array_size_message			BYTE	"Please Enter a Valid Array Size: ",0
+Array_Element		BYTE	"Please Enter and integer Array element: ",0
+Sorting_type_message		BYTE	"Enter 1 for Insertion sort, 2 for Selection sort, 3 for Bubble sort: ",0
+Printing_type_message	BYTE	"Enter 1 for Ascending Sort , 2 for the descending sort or 3 for Both",0
