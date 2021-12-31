@@ -14,3 +14,21 @@ arr_size			dword	?
 Array			dword	50000 dup (0)
 Sort_type		dword	?
 asc_des     		dword	?
+
+.code
+
+main proc
+
+; getting the length of the Array	
+TakeSize:								; displaying number of inputs message
+		mov edx,OFFSET Array_size_message
+		call WriteString						
+		call Crlf			
+		call ReadInt					; input the number of itration in Eax
+		mov arr_size,Eax					; arr_size = Eax
+		pushf						; pushing the flag register in stack			
+		pop Eax						; Eax = EFLAG
+		mov Ebx,500h					; to check if valid int input
+		and Ebx,Eax					; ebx &= eax
+		cmp Ebx,0					; if (unvalid input) goto TakeSize	
+		jne TakeSize
