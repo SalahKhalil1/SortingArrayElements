@@ -8,3 +8,9 @@ Array_size_message			BYTE	"Please Enter a Valid Array Size: ",0
 Array_Element		BYTE	"Please Enter and integer Array element: ",0
 Sorting_type_message		BYTE	"Enter 1 for Insertion sort, 2 for Selection sort, 3 for Bubble sort: ",0
 Printing_type_message	BYTE	"Enter 1 for Ascending Sort , 2 for the descending sort or 3 for Both",0
+
+inp			dword	?
+arr_size			dword	?
+Array			dword	50000 dup (0)
+Sort_type		dword	?
+asc_des     		dword	?
