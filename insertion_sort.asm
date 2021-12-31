@@ -1,26 +1,6 @@
-.model small
- .stack 100h 
- .data
-    n db 11h,99h,22h,88h,33h,77h,44h,66h
-    count dw 8
-  
- .code
- 
- begin: 
-    mov ax,@data
-    
-    mov ds,ax
-    
-    mov cx,count 
-    dec cx 
+;Insertion Sort Algorithm..
+Insertion_Sort:
+		mov  ecx, 1					;i=1 outer loop counter, begins at 1
 
-nextscan: mov bx,cx
-
-        mov si,0
-
-nextcomp:
-
-    mov al,n[si]
-    mov dl,n[si+1]  ;using next index method   
-    cmp al,dl 
-    jc noswap
+loop1:
+		cmp  ecx, arr_size					;condition loop
