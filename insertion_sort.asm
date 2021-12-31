@@ -4,3 +4,7 @@ Insertion_Sort:
 
 loop1:
 		cmp  ecx, arr_size					;condition loop
+		jge  exitLoop1
+		mov  edx, Array[4*ecx]				;first element
+		mov  temp, edx					;storing the element (i) into the temporary variable
+		push ecx					 
