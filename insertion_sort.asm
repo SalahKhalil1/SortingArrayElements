@@ -13,4 +13,10 @@ loop2:
 		jle  exitLoop2					;jump label if less than or equal 
 		cmp  edx, Array[4*ecx-4]			;inner loop second condition (temp<Array[j-1])
 		jg   exitLoop2					;jump label
+
 		mov  esi, 0				 	;clear esi
+		mov  esi, Array[4*ecx-4]			;esi = Array[j-1]
+		mov  Array[4*ecx], esi				;Array[j] = esi
+		dec  ecx					;ecx-- (j--)
+
+		jmp  loop2
