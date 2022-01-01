@@ -10,4 +10,14 @@ Select_loop1:                    ; label
 		mov MaxIndex,ecx         ; max index = current index
 		push ecx                 ; push outer loop counter to save it from changes
 		dec ecx	                 ; decrement counter to be used in inner loop 
-		lea ESI,  Array          ;loading array base address in esi
+		mov ESI,  offset Array          ;loading array base address in esi
+Select_loop2: 
+		cmp ecx,0                ; inner loop counter 
+		jl exit_loop_2			; exit loop if counter is less than 0
+		mov esi, offset Array			; loading base address of array
+		MOV EDI , MaxIndex				; EDI = indexCounter
+		MOV eax, Array[4*ecx]			; eax = the current element value
+		mov ebx, Array[4*edi]			; ebx = the value of max
+		cmp eax,ebx 					; comparing them
+		jle exit_f						; exiting	
+		mov MaxIndex,ecx				; moving the current index to max index 
