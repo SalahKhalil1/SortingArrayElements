@@ -20,3 +20,15 @@ loop2:
 		dec  ecx					;ecx-- (j--)
 
 		jmp  loop2
+
+exitLoop2:
+		mov  edx, 0					;clear edx
+		mov  edx, temp					;edx = temp
+		mov  Array[4*ecx], edx				;Array[j] = edx
+		pop  ecx					;restore
+		inc  ecx					;ecx++ (i++)
+		jmp  loop1
+exitLoop1:                                      
+
+;------------------------------------------------------------------------------------------------
+;end of insertion code
