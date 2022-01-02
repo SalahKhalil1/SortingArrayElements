@@ -62,6 +62,22 @@ TakeElements:								; input loop
 		cmp Ebx,0
 		jne TakeElements
 
+;---------------------------------------------------------------------------------
+TakeElements:								; input loop
+		mov edx,OFFSET Array_Element
+		call  WriteString
+		call  Crlf
+
+		call  ReadInt					; input integer into EAX
+		mov inp,Eax
+		pushf								
+		pop Eax
+;sectio6 part
+
+		mov Ebx,500h					; checking validation of int input
+		and Ebx,Eax
+		cmp Ebx,0
+		jne TakeElements
 
 
 
