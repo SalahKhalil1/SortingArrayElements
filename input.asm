@@ -32,3 +32,22 @@ TakeSize:								; displaying number of inputs message
 		and Ebx,Eax					; ebx &= eax
 		cmp Ebx,0					; if (unvalid input) goto TakeSize	
 		jne TakeSize
+            mov eax,arr_size							
+		
+			 
+		cmp Eax,1					; if ( arr_size <= 0 ) goto TakeSize
+		jl TakeSize		
+		mov Ecx,arr_size					; moving the number of iteration in Ecx for looping
+
+		mov EDI,OFFSET Array				; for storing 
+		mov ESI,OFFSET Array				; for loading
+
+; getting the elements from the user
+; first part
+
+
+
+
+
+
+
