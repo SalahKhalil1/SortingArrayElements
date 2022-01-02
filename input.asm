@@ -44,6 +44,23 @@ TakeSize:								; displaying number of inputs message
 
 ; getting the elements from the user
 ; first part
+;----------------------------------------------------------------------------------------------------
+TakeElements:								; input loop
+		mov edx,OFFSET Array_Element
+		call  WriteString                         ;writing strigns
+		call  Crlf
+
+		call  ReadInt					; input integer into EAX
+		mov inp,Eax
+		pushf								
+		pop Eax
+
+;section6 part
+
+		mov Ebx,500h					; to check if valid int input
+		and Ebx,Eax
+		cmp Ebx,0
+		jne TakeElements
 
 
 
