@@ -21,3 +21,18 @@ Select_loop2:
 		cmp eax,ebx 					; comparing them
 		jle exit_f						; exiting	
 		mov MaxIndex,ecx				; moving the current index to max index 
+exit_f: 
+		dec ecx                         ; decrement inner counter by 1 (j--)
+		jmp Select_loop2                ; return jump to inner loop lable
+exit_loop_2:
+		pop ecx                          ;restore the value of i
+		mov EaX ,Array[4*ecx]            ; EAX = array[i]
+		mov edi,MaxIndex                 ; EDI = maximum index
+        mov ebx,Array[4*edi]             ; EBX = array[maxindex]
+    ;-------------Swapping------------
+		mov Array[4*edi],eax             ; array[maxindex]= array[i]
+		mov Array[4*ecx],ebx             ;array[i]= array[maxindex]
+		jmp Select_loop1
+exit_loop_1:
+
+		jmp Output                       ; jump to output label
