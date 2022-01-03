@@ -72,14 +72,29 @@ TakeElements:								; input loop
 		mov inp,Eax
 		pushf								
 		pop Eax
+
 ;sectio6 part
 
 		mov Ebx,500h					; checking validation of int input
 		and Ebx,Eax
 		cmp Ebx,0
-		jne TakeElements
+		jne TakeElements                          ;element
 
+		mov Eax,inp
+		stosd						; storing data in memory
+   		Loop  TakeElements					; repeat the loop
 
+; getting the Sorting type from the user
+SortType:								; getting sotring type
+		mov edx,OFFSET Sorting_type_message
+		call WriteString
+		call Crlf
+		call ReadInt			
+		cmp Eax,3					; if ( eax > 3 ) goto sort	
+		jg SortType					
+		cmp Eax,1					
+		jl SortType                 ; if ( eax < 1) goto sort
+		mov Sort_type,Eax				; Assign entered Number to a special sort type
 
 
 
