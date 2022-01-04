@@ -35,5 +35,10 @@ reverseArr:									; Reverse the array
 		call crlf									; new line
 		jmp Pr										; loop over the elements
 
-
+printResult:							; print the array 
+		call crlf
+		call crlf
+		mov edx , offset asc_sorting_message         
+		call WriteString                    		
+		call crlf
 
