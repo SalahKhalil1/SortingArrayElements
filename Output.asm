@@ -57,3 +57,10 @@ Pr:
 		jmp End_of_Printing							; end sort
 print_Both:
 		jmp printResult
+
+@reverseArr:								; Reverse the array
+		mov eax , arr_size              	; numerator = (arrSize)
+		mov edx , 0     
+		mov edi , 2                			; denominator = 2
+		div edi                   			; eax = arr_size/2 = arrSize/2  (neglect reminder)
+		mov ecx , eax             	 		; ecx = arrSize/2
