@@ -25,13 +25,10 @@ TakeSize:							; displaying number of inputs message
 		call WriteString				;displays the string in edx to the user
 		call Crlf					;skipping for a new line	
 		call ReadInt					;Confirming that it's an integer taken from the user
-		mov arr_size,Eax				; arr_size = Eax
-		pushf						; pushing the flag register in stack			
-		pop Eax						; Eax = EFLAG
-		mov Ebx,500h					; to check if valid int input
-		and Ebx,Eax					; ebx &= eax
-		cmp Ebx,0					; if (unvalid input) goto TakeSize	
-		jne TakeSize
+		jo TakeSize
+		mov arr_size,Eax					
+		cmp eax,1					; to check if valid int input
+		jl TakeSize                                     ; if (unvalid input) goto TakeSize	
             mov eax,arr_size							
 		
 			 
@@ -69,17 +66,9 @@ TakeElements:								; input loop
 		call  Crlf
 
 		call  ReadInt					; input integer into EAX
+                jo TakeElements 
 		mov inp,Eax
-		pushf								
-		pop Eax
-
-;sectio6 part
-
-		mov Ebx,500h					; checking validation of int input
-		and Ebx,Eax
-		cmp Ebx,0
-		jne TakeElements                          ;element
-
+		
 		mov Eax,inp
 		stosd						; storing data in memory
    		Loop  TakeElements					; repeat the loop
@@ -104,13 +93,19 @@ Printing_type:							; getting sorting type
 		call Crlf					;skipping for a new line	
 		call ReadInt					;Confirming that it's an integer taken from the user
 		mov inp,Eax					;Storing the entered value to the Variable input
-		pushf						;pushing flag registers								
-		pop Eax						
-		mov Ebx,500h					;to check if valid integer input
-		and Ebx,Eax					;to check for blank input	
-		cmp Ebx,0
-		jne Printing_type
+		jo Printing_type
 		mov Eax,inp					;making sure that the input is 1 or 2 or 3 for the desired type 
-		cmp Eax,3			
+		cmp Eax,3
+                jg Printing_type				
+		cmp Eax,1					; if ( eax < 0 ) goto rev
+		jl Printing_type	
+		mov asc_des,Eax                    		; assigning asc_des with the input
+		
+		cmp Sort_type,1					; if( Sort_type == 1 )goto Bubble_Sort
+		je Insertion_Sort				
+		cmp Sort_type,2					;if( Sort_type == 2)goto Selection_Sort
+		je Selection_Sort		
+		cmp Sort_type,3					;if(Sort_type == 3)goto Insertion_sort
+		je Bubble_Sort				
 
 
