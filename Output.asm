@@ -64,3 +64,10 @@ print_Both:
 		mov edi , 2                			; denominator = 2
 		div edi                   			; eax = arr_size/2 = arrSize/2  (neglect reminder)
 		mov ecx , eax             	 		; ecx = arrSize/2
+
+		; get the addresses of the first element and the last element in arr
+		mov ebx , offset Array     			; ebx =  address of the first element
+		mov eax , 4   
+		mul arr_size                    			; eax = arr_size * 4
+		sub eax , 4                			; eax = arr_size * 4 - 4 = offset of last element relative to the arr
+		add eax , ebx              			; eax = address of last element relative to the segment
