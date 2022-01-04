@@ -14,7 +14,11 @@ arr_size			dword	?
 Array			dword	50000 dup (0)
 Sort_type		dword	?
 asc_des     		dword	?
+; selection sort 
+MaxIndex		DWORD 	?
 
+; Insertion sort
+temp			dd	?
 .code
 
 main proc
