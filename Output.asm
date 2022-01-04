@@ -71,3 +71,26 @@ print_Both:
 		mul arr_size                    			; eax = arr_size * 4
 		sub eax , 4                			; eax = arr_size * 4 - 4 = offset of last element relative to the arr
 		add eax , ebx              			; eax = address of last element relative to the segment
+
+@reversingLoop:							; loop through the half of the array              		
+		mov edx , [ebx]        				; edx = copying element from the first half of the array
+		mov edi , [eax]        				; edi = copying the corresponding element from the second half  
+
+		; swaping the them :
+		mov [ebx],edi          
+		mov [eax],edx
+		add ebx , 4
+		sub eax , 4
+		loop @reversingLoop
+		add asc_des,1					; adding 1 to asc_des that is equal 3 to be 4 as not to achieve the condition again 
+		mov edx , offset des_sorting_message         
+		call WriteString                    		; displays  message
+		call crlf					; new line
+		jmp Pr						; jump to loop through elements
+		End_of_Printing:
+
+		;----------------  End of the Program Code ---------------
+
+invoke ExitProcess,0
+main endp
+end main
