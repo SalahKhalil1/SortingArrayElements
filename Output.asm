@@ -42,3 +42,13 @@ printResult:							; print the array
 		call WriteString                    		
 		call crlf
 
+Pr:		
+		mov ecx , arr_size              	; ecx = arrSize
+		mov ebx , offset Array
+		printingLoop:                       ; loop through each element in the array
+		mov eax , [ebx]
+		call Writeint        				; print the content of eax
+		call crlf             				; new line
+		add ebx , 4           				; go to the next element
+
+
