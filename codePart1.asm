@@ -25,22 +25,22 @@ add edx,ebx ;edx=size-1-i
 cmp ecx,edx
 jge exit_L2
 		if_l2:
-		mov ebx,Array[ecx*4]
-		mov edx,Array[4*ecx+4]
-		mov edi,ecx
-		INC ecx
-		cmp ebx,edx
+		mov ebx,Array[ecx*4]       ;ebx = array[j]
+		mov edx,Array[4*ecx+4]	  ;edx = array[j+1]
+		mov edi,ecx				  ; edi = j (save it in other register)
+		INC ecx					  ; j++
+		cmp ebx,edx				  ; compare array[j] & array[j+1]
 		JLE L2
-		
-		mov Array[4*edi+4],EBX
+		; Swap Values
+		mov Array[4*edi+4],EBX	  
 		mov Array[edi*4], EDX
 		JMP L2
 
 
 
 exit_L2:
-	pop ecx
-	inc ecx
+	pop ecx							; resotring the outer counter
+	inc ecx							;i++
 	jmp L1 
   
 
