@@ -51,4 +51,9 @@ Pr:
 		call crlf             				; new line
 		add ebx , 4           				; go to the next element
 
-
+		loop printingLoop
+		cmp asc_des , 3						; Check asc_dec value to print both if equal 3
+		je @reverseArr						; jump to @reverseArr to print both if equal 3
+		jmp End_of_Printing							; end sort
+print_Both:
+		jmp printResult
