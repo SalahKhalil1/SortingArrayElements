@@ -20,12 +20,12 @@ asc_des     		dword	?
 main proc
 
 ; getting the length of the Array	
-TakeSize:								; displaying number of inputs message
+TakeSize:							; displaying number of inputs message
 		mov edx,OFFSET Array_size_message
-		call WriteString						
-		call Crlf			
-		call ReadInt					; input the number of itration in Eax
-		mov arr_size,Eax					; arr_size = Eax
+		call WriteString				;displays the string in edx to the user
+		call Crlf					;skipping for a new line	
+		call ReadInt					;Confirming that it's an integer taken from the user
+		mov arr_size,Eax				; arr_size = Eax
 		pushf						; pushing the flag register in stack			
 		pop Eax						; Eax = EFLAG
 		mov Ebx,500h					; to check if valid int input
@@ -80,8 +80,37 @@ TakeElements:								; input loop
 		cmp Ebx,0
 		jne TakeElements                          ;element
 
+		mov Eax,inp
+		stosd						; storing data in memory
+   		Loop  TakeElements					; repeat the loop
+
+; getting the Sorting type from the user
+SortType:								; getting sotring type
+		mov edx,OFFSET Sorting_type_message
+		call WriteString
+		call Crlf
+		call ReadInt			
+		cmp Eax,3					; if ( eax > 3 ) goto sort	
+		jg SortType					
+		cmp Eax,1					
+		jl SortType                 			; if ( eax < 1) goto sort
+		mov Sort_type,Eax				; Assign entered Number to a special sort type
 
 
-
+; getting the ascending or descending or both from the user
+Printing_type:							; getting sorting type
+		mov edx,OFFSET Printing_type_message		;copying the message to edx
+		call WriteString				;displays the string in edx to the user
+		call Crlf					;skipping for a new line	
+		call ReadInt					;Confirming that it's an integer taken from the user
+		mov inp,Eax					;Storing the entered value to the Variable input
+		pushf						;pushing flag registers								
+		pop Eax						
+		mov Ebx,500h					;to check if valid integer input
+		and Ebx,Eax					;to check for blank input	
+		cmp Ebx,0
+		jne Printing_type
+		mov Eax,inp					;making sure that the input is 1 or 2 or 3 for the desired type 
+		cmp Eax,3			
 
 
