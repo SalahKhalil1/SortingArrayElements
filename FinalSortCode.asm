@@ -51,7 +51,7 @@ TakeSize:							; displaying number of inputs message
 			 
 		cmp Eax,1					; if ( arr_size <= 0 ) goto TakeSize
 		jl TakeSize		
-		mov Ecx,arr_size					; moving the number of iteration in Ecx for looping
+		mov Ecx,arr_size				; moving the number of iteration in Ecx for looping
 
 		mov EDI,OFFSET Array				; for storing 
 		mov ESI,OFFSET Array				; for loading
@@ -59,9 +59,9 @@ TakeSize:							; displaying number of inputs message
 ; getting the elements from the user
 ; first part
 ;----------------------------------------------------------------------------------------------------
-TakeElements:								; input loop
+TakeElements:							; input loop
 		mov edx,OFFSET Array_Element
-		call  WriteString                         ;writing strigns
+		call  WriteString                         	;writing strigns
 		call  Crlf
 
 		call  ReadInt					; input integer into EAX
@@ -77,7 +77,7 @@ TakeElements:								; input loop
 		jne TakeElements
 
 ;---------------------------------------------------------------------------------
-TakeElements:								; input loop
+TakeElements:							; input loop
 		mov edx,OFFSET Array_Element
 		call  WriteString
 		call  Crlf
@@ -88,10 +88,10 @@ TakeElements:								; input loop
 		
 		mov Eax,inp
 		stosd						; storing data in memory
-   		Loop  TakeElements					; repeat the loop
+   		Loop  TakeElements				; repeat the loop
 
 ; getting the Sorting type from the user
-SortType:								; getting sotring type
+SortType:							; getting sotring type
 		mov edx,OFFSET Sorting_type_message
 		call WriteString
 		call Crlf
@@ -102,24 +102,86 @@ SortType:								; getting sotring type
 		jl SortType                 			; if ( eax < 1) goto sort
 		mov Sort_type,Eax				; Assign entered Number to a special sort type
 
+
+
+; getting the ascending or descending or both from the user
+Printing_type:							; getting sorting type
+		mov edx,OFFSET Printing_type_message		;copying the message to edx
+		call WriteString				;displays the string in edx to the user
+		call Crlf					;skipping for a new line	
+		call ReadInt					;Confirming that it's an integer taken from the user
+		mov inp,Eax					;Storing the entered value to the Variable input
+		jo Printing_type
+		mov Eax,inp					;making sure that the input is 1 or 2 or 3 for the desired type 
+		cmp Eax,3
+                jg Printing_type				
+		cmp Eax,1					; if ( eax < 0 ) goto rev
+		jl Printing_type	
+		mov asc_des,Eax                    		; assigning asc_des with the input
+		
+		cmp Sort_type,1					; if( Sort_type == 1 )goto Bubble_Sort
+		je Insertion_Sort				
+		cmp Sort_type,2					;if( Sort_type == 2)goto Selection_Sort
+		je Selection_Sort		
+		cmp Sort_type,3					;if(Sort_type == 3)goto Insertion_sort
+		je Bubble_Sort			
+
+;--------------------------------------------------------------------------------------------------------------
+	
+;---------------------------------Insertion sort begins------------------------------------------
+;Insertion Sort Algorithm..
+Insertion_Sort:
+		mov  ecx, 1					;i=1 outer loop counter, begins at 1
+
+loop1:
+		cmp  ecx, arr_size				;Comparing size with 1
+		jge  exitLoop1					;jump label if size <1
+		mov  edx, Array[4*ecx]				;first element
+		mov  temp, edx					;storing the element (i) into the temporary variable
+		push ecx					;push counter in the stack
+loop2:								
+		cmp  ecx, 0					;inner loop first condition (i<arr_size)
+		jle  exitLoop2					;jump label if less than or equal 
+		cmp  edx, Array[4*ecx-4]			;inner loop second condition (temp<Array[j-1])
+		jg   exitLoop2					;jump label
+
+		mov  esi, 0				 	;clear esi
+		mov  esi, Array[4*ecx-4]			;esi = Array[j-1]
+		mov  Array[4*ecx], esi				;Array[j] = esi
+		dec  ecx					;ecx-- (j--)
+
+		jmp  loop2
+
+exitLoop2:
+		mov  edx, 0					;clear edx
+		mov  edx, temp					;edx = temp
+		mov  Array[4*ecx], edx				;Array[j] = edx
+		pop  ecx					;restore
+		inc  ecx					;ecx++ (i++)
+		jmp  loop1
+exitLoop1:                                      
+
+;------------------------------------------------------------------------------------------------
+;end of insertion code
+
 ; --------------Selection Sort begin--------------------------------
 
 Selection_Sort: 
 		mov ESI,  offset Array ;loading array base address in esi
 		mov ecx,arr_size         ;ecx = arr size
 		
-Select_loop1:                    ; label
-		cmp ecx,0                ;compare ecx with 0
-		jle exit_loop_1          ; exit loop label
-		dec ecx                  ; decrement the counter by 1          
-		mov MaxIndex,ecx         ; max index = current index
-		push ecx                 ; push outer loop counter to save it from changes
-		dec ecx	                 ; decrement counter to be used in inner loop 
-		mov ESI,  offset Array          ;loading array base address in esi
+Select_loop1:                    			; label
+		cmp ecx,0                		;compare ecx with 0
+		jle exit_loop_1         		; exit loop label
+		dec ecx                  		; decrement the counter by 1          
+		mov MaxIndex,ecx         		; max index = current index
+		push ecx                 		; push outer loop counter to save it from changes
+		dec ecx	                 		; decrement counter to be used in inner loop 
+		mov ESI,  offset Array          	;loading array base address in esi
 
 Select_loop2: 
-		cmp ecx,0                ; inner loop counter 
-		jl exit_loop_2			; exit loop if counter is less than 0
+		cmp ecx,0                		; inner loop counter 
+		jl exit_loop_2				; exit loop if counter is less than 0
 		mov esi, offset Array			; loading base address of array
 		MOV EDI , MaxIndex				; EDI = indexCounter
 		MOV eax, Array[4*ecx]			; eax = the current element value
