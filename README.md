@@ -5,6 +5,7 @@ Salah Khalil
 Moaaz Anwar-->
 
 ***
+
 # Sorting Array Elements
 ## About The Project
 *This is a Sorting program that Sorts the integer Values of an array that entered by the user 
@@ -45,22 +46,6 @@ and print them in either*
  * **C++ Code :**
  
 ```
-
-### 2. Selection Sort 
-
-*   *In This Sorting Technique of the Array Elements assuming ascending order technique we are iterating over the array elements that are unsorted to find the maximum one and swapping it at the end with last unsorted one and repeat this again until the whole array is sorted.*
-
-
-* **_For Example :_**
-
-![selectionsortnew](https://user-images.githubusercontent.com/47761503/147995391-86e05f72-c24f-4dfd-a00a-4b119f74577c.png)
-
-*  **_Time Complexity:_**
-    
-     O(n<sup>2</sup>)
-     
- * **C++ Code :**
- ```
 // C++ Insertion Sort Code
 
 	int arrsize = sizeof(array) / sizeof(array[0]);
@@ -76,9 +61,27 @@ and print them in either*
 		array[j] = currentValue;
 
 ```
-***
-// C++ Selection Sort Code
 
+***
+
+
+### 2. Selection Sort 
+
+*   *In This Sorting Technique of the Array Elements assuming ascending order technique we are iterating over the array elements that are unsorted to find the maximum one and swapping it at the end with last unsorted one and repeat this again until the whole array is sorted.*
+
+
+* **_For Example :_**
+
+![selectionsortnew](https://user-images.githubusercontent.com/47761503/147995391-86e05f72-c24f-4dfd-a00a-4b119f74577c.png)
+
+*  **_Time Complexity:_**
+    
+     O(n<sup>2</sup>)
+     
+ * **C++ Code :**
+
+// C++ Selection Sort Code
+```
 	int arrsize = sizeof(array) / sizeof(array[0]);
 	for (int i = arrsize - 1; i > 0; i--)
 	{
