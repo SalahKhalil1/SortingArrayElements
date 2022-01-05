@@ -5,6 +5,46 @@ Salah Khalil
 Moaaz Anwar-->
 
 ***
+# Sorting Array Elements
+## About The Project
+*This is a Sorting program that Sorts the integer Values of an array that entered by the user 
+and print them in either*
+1. Ascending Order Sort
+2. Descending Order Sort
+3. In Both of them
+
+*Using one of these three Sorting Algorithms:*
+1. Insertion Sort
+2. Selection Sort
+3. Bubble Sort
+
+## Sorting Algorithms
+### 1. Insertion Sort 
+
+*   *In This Sorting Technique of the Array Elements assuming ascending order technique we Select the first unsorted element then swapping other elements to the right to create the correct position and shift the unsorted element then we advance to select the next one and repeat this again until the whole array is sorted.*
+
+
+* **_For Example :_**
+
+![i1](https://user-images.githubusercontent.com/47761503/148007906-2e9e987e-635e-4888-8c17-b017cb5035e2.PNG)
+![i2](https://user-images.githubusercontent.com/47761503/148007911-2bad673b-f755-4520-bffa-59f4e615d36f.PNG)
+![i3](https://user-images.githubusercontent.com/47761503/148007913-a9ec273d-658e-4fb1-be69-5f74e7b5a2fb.PNG)
+![i4](https://user-images.githubusercontent.com/47761503/148007914-641eabde-3408-42f4-8c90-3d5783cf0e8b.PNG)
+![i5](https://user-images.githubusercontent.com/47761503/148007919-5a2d96c5-1d4e-4a8c-9470-f2172e88efdb.PNG)
+![i6](https://user-images.githubusercontent.com/47761503/148007920-02e106eb-a4ef-4592-918e-a9fdac42a86a.PNG)
+![i7](https://user-images.githubusercontent.com/47761503/148007922-084cb7a8-855a-416d-9272-7a95b1728917.PNG)
+---
+ <mark> *This Process is performed n-1 times where n is the Array Size until it is finally sorted* </mark>
+    
+![i8](https://user-images.githubusercontent.com/47761503/148007905-de837187-0d55-40ca-b745-930ac06fe01b.PNG)
+
+*  **_Time Complexity:_**
+    
+     O(n<sup>2</sup>)
+     
+ * **C++ Code :**
+ 
+```
 
 ### 2. Selection Sort 
 
@@ -21,6 +61,22 @@ Moaaz Anwar-->
      
  * **C++ Code :**
  ```
+// C++ Insertion Sort Code
+
+	int arrsize = sizeof(array) / sizeof(array[0]);
+
+	for (int i = 1; i < arrsize; i++)
+	{
+		int currentValue = array[i];
+		int j;
+		for ( j = i; j > 0 && currentValue <= array[j - 1]; j--)
+		{
+			array[j] = array[j - 1];
+		}
+		array[j] = currentValue;
+
+```
+***
 // C++ Selection Sort Code
 
 	int arrsize = sizeof(array) / sizeof(array[0]);
