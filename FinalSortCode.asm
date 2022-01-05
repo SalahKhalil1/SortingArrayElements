@@ -31,7 +31,9 @@ MaxIndex		DWORD 	?
 
 ; Insertion sort
 temp			dd	?
-
+; output data
+asc_sorting_message		BYTE  	"Assending Sort OF Elements  :",0
+des_sorting_message		BYTE  	"Dessending Sort OF Elements:",0
 .code
 
 main proc
@@ -59,24 +61,7 @@ TakeSize:							; displaying number of inputs message
 ; getting the elements from the user
 ; first part
 ;----------------------------------------------------------------------------------------------------
-TakeElements:							; input loop
-		mov edx,OFFSET Array_Element
-		call  WriteString                         	;writing strigns
-		call  Crlf
 
-		call  ReadInt					; input integer into EAX
-		mov inp,Eax
-		pushf								
-		pop Eax
-
-;section6 part
-
-		mov Ebx,500h					; to check if valid int input
-		and Ebx,Eax
-		cmp Ebx,0
-		jne TakeElements
-
-;---------------------------------------------------------------------------------
 TakeElements:							; input loop
 		mov edx,OFFSET Array_Element
 		call  WriteString
@@ -323,11 +308,11 @@ print_Both:
 		; get the addresses of the first element and the last element in arr
 		mov ebx , offset Array     			; ebx =  address of the first element
 		mov eax , 4   
-		mul arr_size                    			; eax = arr_size * 4
+		mul arr_size                    	; eax = arr_size * 4
 		sub eax , 4                			; eax = arr_size * 4 - 4 = offset of last element relative to the arr
 		add eax , ebx              			; eax = address of last element relative to the segment
 
-@reversingLoop:							; loop through the half of the array              		
+@reversingLoop:								; loop through the half of the array              		
 		mov edx , [ebx]        				; edx = copying element from the first half of the array
 		mov edi , [eax]        				; edi = copying the corresponding element from the second half  
 
