@@ -34,6 +34,74 @@ temp			dd	?
 
 .code
 
+main proc
+
+; getting the length of the Array	
+TakeSize:							; displaying number of inputs message
+		mov edx,OFFSET Array_size_message
+		call WriteString				;displays the string in edx to the user
+		call Crlf					;skipping for a new line	
+		call ReadInt					;Confirming that it's an integer taken from the user
+		jo TakeSize
+		mov arr_size,Eax					
+		cmp eax,1					; to check if valid int input
+		jl TakeSize                                     ; if (unvalid input) goto TakeSize	
+            mov eax,arr_size							
+		
+			 
+		cmp Eax,1					; if ( arr_size <= 0 ) goto TakeSize
+		jl TakeSize		
+		mov Ecx,arr_size					; moving the number of iteration in Ecx for looping
+
+		mov EDI,OFFSET Array				; for storing 
+		mov ESI,OFFSET Array				; for loading
+
+; getting the elements from the user
+; first part
+;----------------------------------------------------------------------------------------------------
+TakeElements:								; input loop
+		mov edx,OFFSET Array_Element
+		call  WriteString                         ;writing strigns
+		call  Crlf
+
+		call  ReadInt					; input integer into EAX
+		mov inp,Eax
+		pushf								
+		pop Eax
+
+;section6 part
+
+		mov Ebx,500h					; to check if valid int input
+		and Ebx,Eax
+		cmp Ebx,0
+		jne TakeElements
+
+;---------------------------------------------------------------------------------
+TakeElements:								; input loop
+		mov edx,OFFSET Array_Element
+		call  WriteString
+		call  Crlf
+
+		call  ReadInt					; input integer into EAX
+                jo TakeElements 
+		mov inp,Eax
+		
+		mov Eax,inp
+		stosd						; storing data in memory
+   		Loop  TakeElements					; repeat the loop
+
+; getting the Sorting type from the user
+SortType:								; getting sotring type
+		mov edx,OFFSET Sorting_type_message
+		call WriteString
+		call Crlf
+		call ReadInt			
+		cmp Eax,3					; if ( eax > 3 ) goto sort	
+		jg SortType					
+		cmp Eax,1					
+		jl SortType                 			; if ( eax < 1) goto sort
+		mov Sort_type,Eax				; Assign entered Number to a special sort type
+
 ; --------------Selection Sort begin--------------------------------
 
 Selection_Sort: 
