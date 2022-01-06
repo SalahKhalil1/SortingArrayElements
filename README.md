@@ -7,6 +7,15 @@ Moaaz Anwar-->
 
 
 # Sorting Array Elements
+# Table of Contents  
+* [About The Project](#About-The-Project)  
+* [Irvine Library](#Irvine-Library)
+* [Testing Sorting Program](#Testing-Sorting-Program)
+* [Sorting Algorithms](#Sorting-Algorithms)
+* [Tools](#Tools)
+* [Links](#Links)
+* [Project Contributors](#Project-Contributors)
+***
 ## About The Project
 *This is a Sorting program that Sorts the integer Values of an array that entered by the user 
 and print them in either*
@@ -176,7 +185,7 @@ and print them in either*
 		}
 
 ```
-***
+
 
 
 
