@@ -177,3 +177,29 @@ and print them in either*
 
 ```
 ***
+
+
+
+***
+## Tools
+* Assembly Programming Language
+* Visual Studio Code (Editor)
+* Irvine Library
+* MASM32 (Compiler)
+* CMD (Excuting Code)
+
+***
+## Links
+
+* [ Visual Studio Code ](https://code.visualstudio.com/Download)
+* [ Irvine Library ](http://csc.csudh.edu/mmccullough/asm/help/index.html?page=source%2Fmacros32%2Fmdumpmem.htm)
+* [ MASM32 assembler ](https://www.masm32.com)
+
+***
+## Project Contributors
+* [Rawan Mohammed Adelhady](https://github.com/rawanmohammed99/)
+* [Salah Khalil Salah](https://github.com/SalahKhalil1/)
+* [Bassim Attia Abdelatty](https://github.com/Baccem/)
+* [Moaaz Anwar Elsayed](https://github.com/moaaz1010/)
+* [Ziad Gamal Ahmed](https://github.com/ziiadgamal/)
+
